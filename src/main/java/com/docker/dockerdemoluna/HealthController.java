@@ -12,7 +12,7 @@ public class HealthController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public String Health() {
-        System.out.println("~Hello, Backend 1 PASS~");
+        System.out.println("~Hello, Backend PASS~");
         return "Hello This is number 1";
     }
 }
