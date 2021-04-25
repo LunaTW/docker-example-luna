@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DockerDemoLunaApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Hello, Luna");
+		System.out.println("Hello, Luna 2");
 		SpringApplication.run(DockerDemoLunaApplication.class, args);
 	}
 
