@@ -1,18 +1,6 @@
 version: '3.1'
 
 services:
-  luna-nginx:
-    container_name: luna-nginx
-    image: nginx:1.13
-    restart: always
-    ports:
-      - 8082:80
-      - 443:443
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-    depends_on:
-      - app
-
   database:
     image: mysql:8.0.22
     restart: always
@@ -28,13 +16,13 @@ services:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 30s
       retries: 3
-  app:
+  backend:
     depends_on:
       database:
         condition: service_healthy
     build: ./backend
     ports:
-      - 8081:8081
+      - 8080:8080
 #    command: mvn clean spring-boot:run
     environment:
       - DATABASE_HOST=myapp-mysql
@@ -42,3 +30,24 @@ services:
       - DATABASE_PASSWORD=password
       - DATABASE_NAME=mysql
       - DATABASE_PORT=3306
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  luna-nginx:
+    container_name: luna-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 8000:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - backend
+      - frontend

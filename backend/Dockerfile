@@ -6,7 +6,7 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 #FROM maven:3.6.3-jdk-8 as builder
 #WORKDIR /app
 #COPY ./ /app
-#EXPOSE 8081
+#EXPOSE 8080
 #RUN ["mvn", "clean", "install"]
 #
 #FROM openjdk:8-jdk-alpine as prod
