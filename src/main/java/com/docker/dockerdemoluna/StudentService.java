@@ -14,10 +14,10 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudentByLike(String like){
+    public List<Student> getStudentByName(String name){
         return studentRepository.findAll()
                 .stream()
-                .filter(Student -> Student.getLike().equals(like))
+                .filter(Student -> Student.getName().equals(name))
                 .collect(Collectors.toList());
     }
 

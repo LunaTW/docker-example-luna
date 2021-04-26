@@ -17,9 +17,9 @@ public class DatabaseController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Student> DatabaseConnectTest(@RequestParam String like) {
-        System.out.println("~Hello, Student Backend PASS~");
-        return studentService.getStudentByLike(like);
+    public List<Student> DatabaseConnectTest(@RequestParam String name) {
+        System.out.println("~Hello, Student Backend Test~");
+        return studentService.getStudentByName(name);
     }
 
 }
