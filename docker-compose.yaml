@@ -32,7 +32,7 @@ services:
     depends_on:
       database:
         condition: service_healthy
-    build: .
+    build: ./backend
     ports:
       - 8081:8081
 #    command: mvn clean spring-boot:run
