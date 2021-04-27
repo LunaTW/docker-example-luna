@@ -13,7 +13,7 @@ public class DockerDemoLunaApplication {
 	private static final Logger log = LoggerFactory.getLogger(DockerDemoLunaApplication.class);
 
 	public static void main(String[] args) {
-		System.out.println("Hello, Luna 2");
+		System.out.println(" Hello, Luna ");
 		SpringApplication.run(DockerDemoLunaApplication.class, args);
 	}
 

@@ -16,6 +16,9 @@ services:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 30s
       retries: 3
+    networks:
+      - back
+
   backend:
     depends_on:
       database:
@@ -30,6 +33,9 @@ services:
       - DATABASE_PASSWORD=password
       - DATABASE_NAME=mysql
       - DATABASE_PORT=3306
+    networks:
+      - back
+      - front
 
   frontend:
     container_name: frontend
@@ -38,6 +44,8 @@ services:
       - 3000:3000
     depends_on:
       - backend
+    networks:
+      - front
 
   luna-nginx:
     container_name: luna-nginx
@@ -51,3 +59,13 @@ services:
     depends_on:
       - backend
       - frontend
+    networks:
+      - front
+
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
+#volumes:
+#  myapp:
