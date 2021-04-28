@@ -15,11 +15,11 @@ public class DatabaseController {
         this.studentService = studentService;
     }
 
-    @PostMapping
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Student> DatabaseConnectTest(@RequestParam String name) {
+    public String DatabaseConnectTest() {
         System.out.println("~Hello, Student Backend Test~");
-        return studentService.getStudentByName(name);
+        return "Hello, I am health! These are all Student List: " + studentService.getAllStudents();
     }
 
 }

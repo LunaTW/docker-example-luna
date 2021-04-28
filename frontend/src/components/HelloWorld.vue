@@ -27,6 +27,16 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <h3>Have a try with database</h3>
+    <ul>
+      <li>
+        <a
+          href="http://localhost:8080/api/database"
+          target="_blank">
+          test with backend
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 

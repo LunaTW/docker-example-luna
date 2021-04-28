@@ -12,6 +12,8 @@ services:
       - MYSQL_PASSWORD=password
     ports:
       - 3306:3306
+    volumes:
+      - /var/lib/mysql
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 30s
@@ -26,7 +28,6 @@ services:
     build: ./backend
     ports:
       - 8080:8080
-#    command: mvn clean spring-boot:run
     environment:
       - DATABASE_HOST=myapp-mysql
       - DATABASE_USER=myapp-user
@@ -47,6 +48,16 @@ services:
     networks:
       - front
 
+  frontend_diff_network:
+    container_name: frontend_diff_network
+    build: ./frontend
+    ports:
+      - 3001:3000
+    depends_on:
+      - backend
+    networks:
+      - frontNOOOOO
+
   luna-nginx:
     container_name: luna-nginx
     image: nginx:1.13
@@ -61,11 +72,13 @@ services:
       - frontend
     networks:
       - front
+      - back
 
 networks:
   front:
     driver: bridge
+  frontNOOOOO:
+    driver: bridge
   back:
     driver: bridge
-#volumes:
-#  myapp:
+
